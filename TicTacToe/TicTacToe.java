@@ -23,6 +23,20 @@ public class TicTacToe
 		System.out.print("\n");
 	}
 
+	public static Boolean isPositionValid(int position)
+	{
+		if(ticTacToeBoard.equals(" "))
+		{
+			System.out.print("value is " + ticTacToeBoard[position]);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		
+	}
+
 	// returns 0 - 8 for valid inputs.
 	// returns -1 for invalid input.
 	private static int convertInputToIndex(String input)
@@ -83,37 +97,42 @@ public class TicTacToe
 		System.out.print("\n");
 		System.out.print(playerOne + " will play with 'X' & " + playerTwo + " will play with 'O'.");
 
-		while(true)
+		while(true)  
 		{
-		// Print initial board.
-		printBoard();
+			// Print initial board.
+			printBoard();
 
-		// Player 1: Please enter a position
-		System.out.print("Player 1: Please enter a position - ");
-		// A1
-		// Store input in a string.
-		String player1Input = sc.nextLine().trim();
+			// Player 1: Please enter a position
+			System.out.print("Player 1: Please enter a position - ");
+			// A1
+			// Store input in a string.
+			String player1Input = sc.nextLine().trim();
 
-		System.out.print("Player 1 Input: " + player1Input.equals("A3"));
+			int inputIndex = convertInputToIndex(player1Input);
 
-		int inputIndex = convertInputToIndex(player1Input);
-		ticTacToeBoard[inputIndex] = "X";
+			if (ticTacToeBoard[inputIndex].equals(" "))
+			{
+				ticTacToeBoard[inputIndex] = "X";
+			} 
+			else
+			{
+				System.out.print("Position is not valid");
+				continue;
+			}
 
-		// Print initial board.
-		printBoard();
+			// Print initial board.
+			printBoard();
 
-		// Player 2: Please enter a position
-		System.out.print("Player 2: Please enter a position - ");
-		// C1
-		// Store input in a string.
-		String player2Input = sc.nextLine().trim();
+			// Player 2: Please enter a position
+			System.out.print("Player 2: Please enter a position - ");
+			// C1
+			// Store input in a string.
+			String player2Input = sc.nextLine().trim();
 
-		System.out.print("Player 2 Input: " + player2Input.equals("B2"));
+			int inputIndex2 = convertInputToIndex(player2Input);
+			ticTacToeBoard[inputIndex2] = "O";
 
-		int inputIndex2 = convertInputToIndex(player2Input);
-		ticTacToeBoard[inputIndex2] = "O";
-
-		printBoard();
+			printBoard();
 		}
 	}
 }
