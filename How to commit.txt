@@ -1,0 +1,60 @@
+
+C:\Users\informationworks\Documents\JavaProjects\TicTacToe>cd ..
+
+C:\Users\informationworks\Documents\JavaProjects>git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        TicTacToe/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+C:\Users\informationworks\Documents\JavaProjects>git log
+commit adf1450283bac6357893a979902b707a540cea95
+Author: Siddharth <sid6612@gmail.com>
+Date:   Mon Jun 12 11:50:23 2017 +0530
+
+    Library management completed
+
+commit 6dfd9d7feaa5992eb861af26d272efdebc61fa0d
+Author: Harsheela <harsheelatandel@gmail.com>
+Date:   Mon May 22 14:57:36 2017 +0530
+
+    Libraby management 3 menu items work
+
+commit fd1ee2da7f19152bd567472980ea15772930afb3
+Author: Harsheela <harsheelatandel@gmail.com>
+Date:   Mon May 8 11:18:23 2017 +0530
+
+    Java FresjJuice Test works
+
+C:\Users\informationworks\Documents\JavaProjects>git add --all
+
+C:\Users\informationworks\Documents\JavaProjects>git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   TicTacToe/TicTacToe.java
+
+
+C:\Users\informationworks\Documents\JavaProjects>git commit -m "Print board works for tic tac toe"
+[master 9653514] Print board works for tic tac toe
+ 1 file changed, 52 insertions(+)
+ create mode 100644 TicTacToe/TicTacToe.java
+
+C:\Users\informationworks\Documents\JavaProjects>git push origin master
+Username for 'https://github.com': sid6612@gmail.com
+error: cannot spawn C:/Program Files/Git/usr/libexec/git-core/git-gui--askpass: No such file or directory
+Password for 'https://sid6612@gmail.com@github.com':
+Counting objects: 4, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 739 bytes | 0 bytes/s, done.
+Total 4 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/sid6612/java-trial.git
+   adf1450..9653514  master -> master
