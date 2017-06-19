@@ -123,8 +123,10 @@ public class TicTacToe
 			// Print initial board.
 			printBoard();
 
-			while(true){
+			while(true)
+			{
 				// Player 2: Please enter a position
+				System.out.print("\n");
 				System.out.print("Player 2: Please enter a position - ");
 				// C1
 				// Store input in a string.
@@ -132,17 +134,18 @@ public class TicTacToe
 
 				int inputIndex2 = convertInputToIndex(player2Input);
 
-				if position is valid {
+				if (ticTacToeBoard[inputIndex2].equals(" "))
+				{
 					ticTacToeBoard[inputIndex2] = "O";
 
 					printBoard();
 					break;
-				} else {
+				}
+				else
+				{
 					System.out.print("Position is not valid");
 				}
-			}
-
-			
+			}		
 		}
 	}
 }
