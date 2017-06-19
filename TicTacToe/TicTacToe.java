@@ -83,6 +83,104 @@ public class TicTacToe
 		}
 	}
 
+	// Player 1 wins: return 1
+	// Player 2 wins: return 2
+	// Nobody wins  : return 0
+	public static int winningPlayerStatus()
+	{
+		// {"X", " ", " ", "X", " ", " ", "X", " ", " "};
+
+		if (ticTacToeBoard[0].equals(ticTacToeBoard[3]) && ticTacToeBoard[0].equals(ticTacToeBoard[6]) && ticTacToeBoard[0].equals(" ") == false)
+		{
+			if (ticTacToeBoard[0].equals("X")) 
+			{
+				return 1;
+			}
+			else if (ticTacToeBoard[0].equals("O"))
+			{
+				return 2;
+			}
+		}
+		else if (ticTacToeBoard[1].equals(ticTacToeBoard[4]) && ticTacToeBoard[1].equals(ticTacToeBoard[7]) && ticTacToeBoard[1].equals(" ") == false)
+		{
+			if (ticTacToeBoard[1].equals("X")) 
+			{
+				return 1;
+			}
+			else if (ticTacToeBoard[1].equals("O"))
+			{
+				return 2;
+			}
+		}
+		else if (ticTacToeBoard[2].equals(ticTacToeBoard[5]) && ticTacToeBoard[2].equals(ticTacToeBoard[8]) && ticTacToeBoard[2].equals(" ") == false)
+		{
+			if (ticTacToeBoard[2].equals("X"))
+			{
+				return 1;
+			}
+			else if (ticTacToeBoard[2].equals("O"))
+			{
+				return 2;
+			}
+		}
+		else if (ticTacToeBoard[0].equals(ticTacToeBoard[1]) && ticTacToeBoard[0].equals(ticTacToeBoard[2]) && ticTacToeBoard[0].equals(" ") == false)
+		{
+			if (ticTacToeBoard[0].equals("X"))
+			{
+				return 1;
+			}
+			else if (ticTacToeBoard[0].equals("O"))
+			{
+				return 2;
+			}
+		}
+		else if (ticTacToeBoard[3].equals(ticTacToeBoard[4]) && ticTacToeBoard[3].equals(ticTacToeBoard[5]) && ticTacToeBoard[3].equals(" ") == false)
+		{
+			if (ticTacToeBoard[3].equals("X"))
+			{
+				return 1;
+			}
+			else if (ticTacToeBoard[3].equals("O"))
+			{
+				return 2;
+			}
+		}
+		else if (ticTacToeBoard[6].equals(ticTacToeBoard[7]) && ticTacToeBoard[6].equals(ticTacToeBoard[8]) && ticTacToeBoard[6].equals(" ") == false)
+		{
+			if (ticTacToeBoard[6].equals("X"))
+			{
+				return 1;
+			}
+			else if (ticTacToeBoard[6].equals("O"))
+			{
+				return 2;
+			}
+		}
+		else if (ticTacToeBoard[0].equals(ticTacToeBoard[4]) && ticTacToeBoard[0].equals(ticTacToeBoard[8]) && ticTacToeBoard[0].equals(" ") == false)
+		{
+			if (ticTacToeBoard[0].equals("X"))
+			{
+				return 1;
+			}
+			else if (ticTacToeBoard[0].equals("O"))
+			{
+				return 2;
+			}
+		}
+		else if (ticTacToeBoard[2].equals(ticTacToeBoard[4]) && ticTacToeBoard[2].equals(ticTacToeBoard[6]) && ticTacToeBoard[2].equals(" ") == false)
+		{
+			if (ticTacToeBoard[2].equals("X"))
+			{
+				return 1;
+			}
+			else if (ticTacToeBoard[2].equals("O"))
+			{
+				return 2;
+			}
+		}
+		return 0;		
+	}
+
 	public static void main (String args[])
 	{
 		String playerOne, playerTwo;
@@ -95,7 +193,7 @@ public class TicTacToe
 		System.out.print("Enter secound player name: ");
 		playerTwo = sc.nextLine();
 		System.out.print("\n");
-		System.out.print(playerOne + " will play with 'X' & " + playerTwo + " will play with 'O'.");
+		System.out.print( playerOne + " will play with 'X' & " + playerTwo + " will play with 'O'.");
 
 		while(true)  
 		{
@@ -120,7 +218,14 @@ public class TicTacToe
 				continue;
 			}
 
-			// Print initial board.
+			// Player 1's turn is over.
+			int player1WinningStatus = winningPlayerStatus();
+			if(player1WinningStatus == 1) 
+			{
+				System.out.print( playerOne + " wins");
+				break;
+			}
+
 			printBoard();
 
 			while(true)
@@ -145,7 +250,21 @@ public class TicTacToe
 				{
 					System.out.print("Position is not valid");
 				}
-			}		
+			}
+
+			// Player 2's turn is over.
+			int player2WinningStatus = winningPlayerStatus();
+			if(player2WinningStatus == 2) 
+			{
+				System.out.print( playerTwo + " wins");
+				break;
+			}
+
 		}
+	/*	while(true)
+		{
+			System.out.println("\n");
+			System.out.print("Play again (Y/N) : ");
+		}*/
 	}
 }
