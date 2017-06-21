@@ -6,6 +6,7 @@ public class TicTacToe
 {
 	static String[] ticTacToeBoard = {" ", " ", " ", " ", " ", " ", " ", " ", " "};
 	
+	// pirnt blank TicTacToe board
 	public static void printBoard()
 	{
 		System.out.print("\n");
@@ -23,6 +24,7 @@ public class TicTacToe
 		System.out.print("\n");
 	}
 
+	// if position will be blank it'll print the position which will entered by player
 	public static Boolean isPositionValid(int position)
 	{
 		if(ticTacToeBoard.equals(" "))
@@ -181,20 +183,13 @@ public class TicTacToe
 		return 0;		
 	}
 
-	public static void main (String args[])
+	public static void PlayOneGame(Scanner sc, String playerOne, String playerTwo) 
 	{
-		String playerOne, playerTwo;
+		// Clear the board
+		ticTacToeBoard = new String[] {" ", " ", " ", " ", " ", " ", " ", " ", " "};
 
-		Scanner sc = new Scanner(System.in);
-		System.out.print("\n");
-		System.out.print("Enter first player name: ");
-		playerOne = sc.nextLine();
-		System.out.print("\n");
-		System.out.print("Enter secound player name: ");
-		playerTwo = sc.nextLine();
-		System.out.print("\n");
-		System.out.print( playerOne + " will play with 'X' & " + playerTwo + " will play with 'O'.");
-
+		// This while loop represents one game.
+		// This should end only when one game is complete.
 		while(true)  
 		{
 			// Print initial board.
@@ -218,6 +213,8 @@ public class TicTacToe
 				continue;
 			}
 
+			printBoard();
+
 			// Player 1's turn is over.
 			int player1WinningStatus = winningPlayerStatus();
 			if(player1WinningStatus == 1) 
@@ -225,8 +222,6 @@ public class TicTacToe
 				System.out.print( playerOne + " wins");
 				break;
 			}
-
-			printBoard();
 
 			while(true)
 			{
@@ -261,10 +256,34 @@ public class TicTacToe
 			}
 
 		}
-	/*	while(true)
+	}
+
+	public static void main (String args[])
+	{
+		String playerOne, playerTwo;
+
+		Scanner sc = new Scanner(System.in);
+		System.out.print("\n");
+		System.out.print("Enter first player name: ");
+		playerOne = sc.nextLine();
+		System.out.print("\n");
+		System.out.print("Enter secound player name: ");
+		playerTwo = sc.nextLine();
+		System.out.print("\n");
+		System.out.print( playerOne + " will play with 'X' & " + playerTwo + " will play with 'O'.");
+
+		while(true)
 		{
+			PlayOneGame(sc, playerOne, playerTwo);
+
 			System.out.println("\n");
-			System.out.print("Play again (Y/N) : ");
-		}*/
+			System.out.print("Play again (Yes/No) : ");
+			String c = sc.nextLine();
+
+        	if(c == "No")
+        	{
+        		break;
+        	}
+   		}
 	}
 }
