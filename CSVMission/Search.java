@@ -6,7 +6,7 @@ public class Search
 {
 
 	// Create an ArrayList of coutries.
-	static ArrayList<Country> coutries =  new ArrayList<Country>();
+	static ArrayList<Country> countries =  new ArrayList<Country>();
 	static ArrayList<State> states =  new ArrayList<State>();
 	static ArrayList<City> cities =  new ArrayList<City>();
 	
@@ -29,10 +29,10 @@ public class Search
                 // System.out.println("Country [id= " + country[0] + " , name=" + country[1] + "]");
 
                 // Create a new Country object with the id and name.
-                coutries.add(new Country(1,"India"));
-                coutries.add(new Country(2,"Canada"));
-                coutries.add(new Country(3,"Australia"));
-                coutries.add(new Country(4,"USA"));
+                countries.add(new Country(1,"India"));
+                countries.add(new Country(2,"Canada"));
+                countries.add(new Country(3,"Australia"));
+                countries.add(new Country(4,"USA"));
             }
         }
         catch (FileNotFoundException e)
@@ -231,6 +231,7 @@ public class Search
         }
 	}
 
+
 	public static void showMenuForCountrySearch() {
 		System.out.print("\n");
 		System.out.println("What do you want to search by?");
@@ -269,9 +270,9 @@ public class Search
 
 	public static Country searchCountryById(int idToSearch)
 	{
-		for (int i = 0; i < coutries.size(); i++) 
+		for (int i = 0; i < countries.size(); i++) 
 		{
-			Country country = coutries.get(i);
+			Country country = countries.get(i);
 			if(country.id == idToSearch)
 			{
 				return country;
@@ -282,9 +283,9 @@ public class Search
 
 	public static Country searchCountryByName(String nameToSearch)
 	{
-		for (int i = 0; i < coutries.size(); i++) 
+		for (int i = 0; i < countries.size(); i++) 
 		{
-			Country country = coutries.get(i);
+			Country country = countries.get(i);
 			if(country.name.equals(nameToSearch))
 			{
 				return country;
@@ -354,6 +355,68 @@ public class Search
 		return null;
 	}
 
+	public static void showMenuForCitySearch() {
+		System.out.print("\n");
+		System.out.println("What do you want to search by?");
+    	System.out.println("1. Id");
+    	System.out.println("2. Name");	
+
+    	Scanner sc = new Scanner(System.in);
+
+		System.out.print("Select option from above : ");
+		int selectedOption = sc.nextInt();
+
+		if (selectedOption == 1) {
+			System.out.print("\n");
+			System.out.print("Please Enter ID: ");
+			int cityId = sc.nextInt();
+			City city = searchCityById(cityId);
+
+			if(city == null) {
+				System.out.print("Please Enter Valid ID....");
+			} else {
+				System.out.print("Your Country Name is " + city.name );
+			}
+		} else if (selectedOption == 2) {
+			System.out.print("\n");
+			System.out.print("Please Enter Name: ");
+			String cityName = sc.next();
+			City city = searchCityByName(cityName);
+
+			if(city == null) {
+				System.out.print("Please Enter Valid Name....");
+			} else {
+				System.out.print("Your Country ID is " + city.id );
+			}
+		}
+	}
+
+	public static City searchCityById(int idToSearch)
+	{
+		for (int i = 0; i < cities.size(); i++) 
+		{
+			City city = cities.get(i);
+			if(city.id == idToSearch)
+			{
+				return city;
+			}
+		}
+		return null;
+	}
+
+	public static City searchCityByName(String nameToSearch)
+	{
+		for (int i = 0; i < cities.size(); i++) 
+		{
+			City city = cities.get(i);
+			if(city.name.equals(nameToSearch))
+			{
+				return city;
+			}
+		}
+		return null;
+	}
+
 	public static void printSearchMenu()
 	{
 		System.out.println("What do you want to search ?");
@@ -376,7 +439,7 @@ public class Search
 		}
 		else if (selectedOption == 3)
 		{
-			
+			showMenuForCitySearch();
 		}
 		else 
 		{
