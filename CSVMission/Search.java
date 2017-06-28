@@ -247,12 +247,11 @@ public class Search
 			System.out.print("Please Enter ID: ");
 			int countryId = sc.nextInt();
 			Country country = searchCountryById(countryId);
-			if (selectedOption == countryId) {
-				System.out.print("Your country name is " + country.name );
-			}
-			else
-			{
+
+			if(country == null) {
 				System.out.print("Please Enter Valid ID....");
+			} else {
+				System.out.print("Your Country Name is " + country.name );
 			}
 		} else if (selectedOption == 2) {
 			System.out.print("\n");
@@ -294,6 +293,67 @@ public class Search
 		return null;
 	}
 
+	public static void showMenuForStateSearch() {
+		System.out.print("\n");
+		System.out.println("What do you want to search by?");
+    	System.out.println("1. Id");
+    	System.out.println("2. Name");	
+
+    	Scanner sc = new Scanner(System.in);
+
+		System.out.print("Select option from above : ");
+		int selectedOption = sc.nextInt();
+
+		if (selectedOption == 1) {
+			System.out.print("\n");
+			System.out.print("Please Enter ID: ");
+			int stateId = sc.nextInt();
+			State state = searchStateById(stateId);
+			if(state == null) {
+				System.out.print("Please Enter Valid ID....");
+			} else {
+				System.out.print("Your State name is " + state.name );
+			}
+		} else if (selectedOption == 2) {
+			System.out.print("\n");
+			System.out.print("Please Enter Name: ");
+			String stateName = sc.next();
+			State state = searchStateByName(stateName);
+
+			if(state == null) {
+				System.out.print("Please Enter Valid Name....");
+			} else {
+				System.out.print("Your State ID is " + state.id );
+			}
+		}
+	}
+
+	public static State searchStateById(int idToSearch)
+	{
+		for (int i = 0; i < states.size(); i++) 
+		{
+			State state = states.get(i);
+			if(state.id == idToSearch)
+			{
+				return state;
+			}
+		}
+		return null;
+	}
+
+	public static State searchStateByName(String nameToSearch)
+	{
+		for (int i = 0; i < states.size(); i++) 
+		{
+			State state = states.get(i);
+			if(state.name.equals(nameToSearch))
+			{
+				return state;
+			}
+		}
+		return null;
+	}
+
 	public static void printSearchMenu()
 	{
 		System.out.println("What do you want to search ?");
@@ -312,7 +372,7 @@ public class Search
 		}
 		else if (selectedOption == 2)
 		{
-			
+			showMenuForStateSearch();	
 		}
 		else if (selectedOption == 3)
 		{
@@ -323,6 +383,23 @@ public class Search
 			System.out.println("Invalid Option....");
 		}
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*	// return country or null
 	public static int findCountryByName(string name)

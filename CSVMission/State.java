@@ -1,6 +1,6 @@
 public class State
 {
-	Integer id;
+	int id;
 	String name;
 
 	public State(int _id, String _name) 

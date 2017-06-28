@@ -1,6 +1,6 @@
 public class City
 {
-	Integer id;
+	int id;
 	String name;
 
 	public City(int _id, String _name) 

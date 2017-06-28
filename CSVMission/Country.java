@@ -1,6 +1,6 @@
 public class Country
 {
-	Integer id;
+	int id;
 	String name;
 
 	public Country(int _id, String _name) 
