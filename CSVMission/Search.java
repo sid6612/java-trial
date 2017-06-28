@@ -9,6 +9,7 @@ public class Search
 	static ArrayList<Country> coutries =  new ArrayList<Country>();
 	static ArrayList<State> states =  new ArrayList<State>();
 	static ArrayList<City> cities =  new ArrayList<City>();
+	
 	// Create a function 
 	public static void loadCountryCsvToArrayList()
 	{
@@ -32,7 +33,6 @@ public class Search
                 coutries.add(new Country(2,"Canada"));
                 coutries.add(new Country(3,"Australia"));
                 coutries.add(new Country(4,"USA"));
-                // Add the newly created country to array list
             }
         }
         catch (FileNotFoundException e)
@@ -59,6 +59,39 @@ public class Search
         }
 	}
 
+	/*public static void addCountry()
+	{
+        // Add the newly created country to array list
+        String countryName;
+		int countryId = getIdForNewcountry();
+
+		Scanner sc = new Scanner(System.in);
+		System.out.print("\n");
+		System.out.print("Enter name to add new country: ");
+		countryName = sc.nextLine();
+		System.out.println("\n");
+
+		coutries.add(new Country(countryId, countryName));
+		System.out.println("\n");
+		System.out.print("A new country is being added. Country Id  assigned is" + countryId + ".");		
+	}
+
+	public static int getIdForNewcountry()
+	{
+		int maxNumber = 0;
+
+		for (int n = 0; n < coutries.size(); n++)
+		{
+			Country country = coutries.get(n);
+			if (country.id > maxNumber)
+			{
+				maxNumber = country.id;
+			}
+		}
+
+		return maxNumber + 1;
+	}
+*/
 		public static void loadStateCsvToArrayList()
 	{
 		String csvFile = "C:/Users/informationworks/Documents/JavaProjects/CSVMission/states.csv";
@@ -72,9 +105,9 @@ public class Search
             while ((line = br.readLine()) != null)
             {
                 // use comma as separator
-                String[] country = line.split(cvsSplitBy);
+                String[] state = line.split(cvsSplitBy);
 
-                // System.out.println("Country [id= " + country[0] + " , name=" + country[1] + "]");
+                // System.out.println("State [id= " + state[0] + " , name=" + state[1] + "]");
 
                 // Create a new Country object with the id and name.
                 states.add(new State(1,"Gujarat"));
@@ -93,8 +126,8 @@ public class Search
             }
         }
         catch (FileNotFoundException e)
-        {
-            e.printStackTrace();
+        {           
+        	e.printStackTrace();
         }
         catch (IOException e)
         {
@@ -116,7 +149,8 @@ public class Search
         }
 	}
 
-		public static void loadCityCsvToArrayList()
+	
+	public static void loadCityCsvToArrayList()
 	{
 		String csvFile = "C:/Users/informationworks/Documents/JavaProjects/CSVMission/cities.csv";
         BufferedReader br = null;
@@ -129,9 +163,9 @@ public class Search
             while ((line = br.readLine()) != null)
             {
                 // use comma as separator
-                String[] country = line.split(cvsSplitBy);
+                String[] city = line.split(cvsSplitBy);
 
-                // System.out.println("Country [id= " + country[0] + " , name=" + country[1] + "]");
+                // System.out.println("City [id= " + city[0] + " , name=" + city[1] + "]");
 
                 // Create a new Country object with the id and name.
                 cities.add(new City(1,"Bharuch"));
@@ -145,7 +179,7 @@ public class Search
                 cities.add(new City(9,"Margao"));
                 cities.add(new City(10,"Belleville"));
                 cities.add(new City(11,"Ottawa"));
-                cities.add(new City(12"Toronto"));
+                cities.add(new City(12,"Toronto"));
                 cities.add(new City(13,"Brandon"));
                 cities.add(new City(14,"Winnipeg"));
                 cities.add(new City(15,"Steinbach"));
@@ -169,7 +203,7 @@ public class Search
                 cities.add(new City(33,"Hollywood"));
                 cities.add(new City(34,"Antonio"));
                 cities.add(new City(35,"Houston"));
-                cities.add(new City(35,"Austin"));
+                cities.add(new City(36,"Austin"));
                 // Add the newly created country to array list
             }
         }
@@ -197,27 +231,137 @@ public class Search
         }
 	}
 
-	// return country or null
+	public static void showMenuForCountrySearch() {
+		System.out.print("\n");
+		System.out.println("What do you want to search by?");
+    	System.out.println("1. Id");
+    	System.out.println("2. Name");	
+
+    	Scanner sc = new Scanner(System.in);
+
+		System.out.print("Select option from above : ");
+		int selectedOption = sc.nextInt();
+
+		if (selectedOption == 1) {
+			System.out.print("\n");
+			System.out.print("Please Enter ID: ");
+			int countryId = sc.nextInt();
+			Country country = searchCountryById(countryId);
+			if (selectedOption == countryId) {
+				System.out.print("Your country name is " + country.name );
+			}
+			else
+			{
+				System.out.print("Please Enter Valid ID....");
+			}
+		} else if (selectedOption == 2) {
+			System.out.print("\n");
+			System.out.print("Please Enter Name: ");
+			String countryName = sc.next();
+			Country country = searchCountryByName(countryName);
+
+			if(country == null) {
+				System.out.print("Please Enter Valid Name....");
+			} else {
+				System.out.print("Your Country ID is " + country.id );
+			}
+		}
+	}
+
+	public static Country searchCountryById(int idToSearch)
+	{
+		for (int i = 0; i < coutries.size(); i++) 
+		{
+			Country country = coutries.get(i);
+			if(country.id == idToSearch)
+			{
+				return country;
+			}
+		}
+		return null;
+	}
+
+	public static Country searchCountryByName(String nameToSearch)
+	{
+		for (int i = 0; i < coutries.size(); i++) 
+		{
+			Country country = coutries.get(i);
+			if(country.name.equals(nameToSearch))
+			{
+				return country;
+			}
+		}
+		return null;
+	}
+
+	public static void printSearchMenu()
+	{
+		System.out.println("What do you want to search ?");
+    	System.out.println("1. Country");
+    	System.out.println("2. State");
+    	System.out.println("3. City");
+
+    	Scanner sc = new Scanner(System.in);
+
+		System.out.print("Select option from above : ");
+		int selectedOption = sc.nextInt();
+
+		if (selectedOption == 1)
+		{
+			showMenuForCountrySearch();
+		}
+		else if (selectedOption == 2)
+		{
+			
+		}
+		else if (selectedOption == 3)
+		{
+			
+		}
+		else 
+		{
+			System.out.println("Invalid Option....");
+		}
+	}
+
+/*	// return country or null
 	public static int findCountryByName(string name)
 	{
+		String countryName;
 
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter country name; ");
+		countryName = sc.nextLine();
+		if (loadCountryCsvToArrayList.equals(name))
+		{
+			return 1;
+
+		}
 	}
 
 	// return state or null
 	public static int findStateByName(string name)
 	{
+		if (loadStateCsvToArrayList.equals(name))
+		{
+			return 1;
 
+		}
 	}
 
 	// return city or null
 	public static int findCityByName(string name)
 	{
+		if (loadCityCsvToArrayList.equals(name))
+		{
+			return 1;
 
+		}
 	}
 
 	public static void printCountries()
 	{
-
+	
 	}
 
 	public static void printStates()
@@ -229,14 +373,19 @@ public class Search
 	{
 
 	}
-
+*/
     public static void main(String[] args)
     {
     	loadCountryCsvToArrayList();
     	loadStateCsvToArrayList();
     	loadCityCsvToArrayList();
+    	
+    	printSearchMenu();
+    	
+    	/*
     	printCountries();
     	printStates();
     	printCiyies();
+    	*/
 	}
 }
