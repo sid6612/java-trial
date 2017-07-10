@@ -29,8 +29,7 @@ public class Country
     		}
 
     		int totalSpaceForStateName = 20;
-
-    		String displayStateName = " " + currentState.name;
+            String displayStateName = " " + currentState.name;
     		int spacesToAddStateName = totalSpaceForStateName - displayStateName.length();
 
     		for(int n = 0; n < spacesToAddStateName; n++)
@@ -48,8 +47,7 @@ public class Country
     		}
 
     		int totalSpaceForCityName = 25;
-    		
-    		String displayCityName = " " + currentCity.name;
+            String displayCityName = " " + currentCity.name;
     		int spacesToAddCityName = totalSpaceForCityName - displayCityName.length();
 
     		for(int n = 0; n < spacesToAddCityName; n++)

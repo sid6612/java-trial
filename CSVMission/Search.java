@@ -181,10 +181,11 @@ public class Search
 			Country country = searchCountryById(countryId);
 
 			if(country == null) {
+				//country.printCountryDetails();
 				System.out.print("Please Enter Valid ID....");
 			} else {
-				country.printCountryDetails();
-				//System.out.print("Your Country Name is " + country.name );
+				
+				System.out.print("Your Country Name is " + country.name );
 			}
 		} else if (selectedOption == 2) {
 			System.out.print("\n");
@@ -194,9 +195,9 @@ public class Search
 
 			if(country == null) {
 				System.out.print("Please Enter Valid Name....");
+				//country.printCountryDetails();
 			} else {
-				country.printCountryDetails();
-				//System.out.print("Your Country ID is " + country.id );
+				System.out.print("Your Country ID is " + country.id );
 			}
 		}
 	}
@@ -246,8 +247,8 @@ public class Search
 			if(state == null) {
 				System.out.print("Please Enter Valid ID....");
 			} else {
-
-				//System.out.print("Your State name is " + state.name );
+				//state.printStateDetails();
+				System.out.print("Your State name is " + state.name );
 			}
 		} else if (selectedOption == 2) {
 			System.out.print("\n");
@@ -258,6 +259,7 @@ public class Search
 			if(state == null) {
 				System.out.print("Please Enter Valid Name....");
 			} else {
+				//state.printStateDetails();
 				System.out.print("Your State ID is " + state.id );
 			}
 		}
@@ -301,27 +303,36 @@ public class Search
 		System.out.print("Select option from above : ");
 		int selectedOption = sc.nextInt();
 
-		if (selectedOption == 1) {
+		if (selectedOption == 1)
+		{
 			System.out.print("\n");
 			System.out.print("Please Enter ID: ");
 			int cityId = sc.nextInt();
 			City city = searchCityById(cityId);
 
-			if(city == null) {
+			if(city == null)
+			{
 				System.out.print("Please Enter Valid ID....");
-			} else {
+			}
+			else
+			{
 				city.printCityDetails();
 				// System.out.print("Your City Name is " + city.name );
 			}
-		} else if (selectedOption == 2) {
+		}
+		else if (selectedOption == 2)
+		{
 			System.out.print("\n");
 			System.out.print("Please Enter Name: ");
 			String cityName = sc.next();
 			City city = searchCityByName(cityName);
 
-			if(city == null) {
+			if(city == null)
+			{
 				System.out.print("Please Enter Valid Name....");
-			} else {
+			}
+			else
+			{
 				city.printCityDetails();
 				// System.out.print("Your City ID is " + city.id );
 			}
@@ -402,23 +413,87 @@ public class Search
 
 		if(selectedOption == 1)
 		{
+			
+			System.out.println("| Country ID | Country Name  |");
 			for (int i = 0; i < countries.size(); i++) 
 			{
-	        	System.out.println(countries.get(i).name);
+    			int totalSpaceForCountryId = 12;
+    			String displayCountryId = " " + countries.get(i).id;
+    			int spacesToAddCountryId = totalSpaceForCountryId - displayCountryId.length();
+
+    			for(int n = 0; n < spacesToAddCountryId; n++)
+    			{
+	    			displayCountryId = displayCountryId + " ";
+    			}
+
+    			int totalSpaceForCountryName = 15;
+				String displayCountryName = " " + countries.get(i).name;
+    			int spacesToAddCountryName = totalSpaceForCountryName - displayCountryName.length();
+
+    			for(int n = 0; n < spacesToAddCountryName; n++)
+    			{
+    				displayCountryName = displayCountryName + " ";
+    			}
+	        	//System.out.println(countries.get(i).name);
+
+	        	System.out.println("|" + displayCountryId + "|" + displayCountryName + "|");
 	    	}
 		}
 		else if (selectedOption == 2)
 		{
+			System.out.println("| State ID | State Name     |");
 			for (int j = 0; j < states.size(); j++) 
 			{
-	        	System.out.println(states.get(j).name);
+				int totalSpaceForStateId = 10;
+    			String displayStateId = " " + states.get(j).id;
+    			int spacesToAddStateId = totalSpaceForStateId - displayStateId.length();
+
+    			for(int n = 0; n < spacesToAddStateId; n++)
+    			{
+    				displayStateId = displayStateId + " ";
+    			}
+
+    			int totalSpaceForStateName = 16;
+				String displayStateName = " " + states.get(j).name;
+    			int spacesToAddStateName = totalSpaceForStateName - displayStateName.length();
+
+    			for(int n = 0; n < spacesToAddStateName; n++)
+    			{
+    				displayStateName = displayStateName + " ";
+	    		}
+	        	
+	        	//System.out.println(states.get(j).name);
+
+	        	System.out.println("|" + displayStateId + "|" + displayStateName + "|");
 	    	}
 		}
 		else if (selectedOption == 3)
 		{
+			System.out.println("| City ID | City Name      |");
 			for (int k = 0; k < cities.size(); k++) 
 			{
-	        	System.out.println(cities.get(k).name);
+	        	int totalSpaceForCityId = 9;
+    			String displayCityId = " " + cities.get(k).id;
+    			int spacesToAddCityId = totalSpaceForCityId - displayCityId.length();
+
+    			for(int n = 0; n < spacesToAddCityId; n++)
+    			{
+    				displayCityId = displayCityId + " ";
+    			}
+
+    			int totalSpaceForCityName = 16;
+    		
+    			String displayCityName = " " + cities.get(k).name;
+    			int spacesToAddCityName = totalSpaceForCityName - displayCityName.length();
+
+    			for(int n = 0; n < spacesToAddCityName; n++)
+    			{
+    				displayCityName = displayCityName + " ";
+    			}
+
+	        	//System.out.println(cities.get(k).name);
+
+	        	System.out.println("|" + displayCityId + "|" + displayCityName + "|");
 	    	}
 		}
 	}
@@ -432,24 +507,25 @@ public class Search
 		String cityName = sc.next();
 		City city = searchCityByName(cityName);
 
-		if(city == null)
-		{
-			System.out.print("Please Enter Valid Name....");
-		}
-		else
+		if(city != null)
 		{
 			System.out.println("City: " + city.name);
-		}
 
-		State state = searchStateById(city.stateId);
+			State state = searchStateById(city.stateId);
 
-		if(state == null)
-		{
-			System.out.print("State not found...");
+			if(state != null)
+			{
+				System.out.println("State: " + state.name);
+			}
+			else
+			{
+				System.out.print("State not found...");
+			}
 		}
 		else
 		{
-			System.out.println("State: " + state.name);
+			System.out.print("Please Enter Valid Name....");
+			City.printAllCityNames();
 		}
 	}
 
@@ -468,7 +544,6 @@ public class Search
     		System.out.println("1. View List");
     		System.out.println("2. Search Option");
     		System.out.println("3. Search State By City");
-    		System.out.println("4. Search City By State");
     		System.out.println("Enter 0 to exit");
 
 

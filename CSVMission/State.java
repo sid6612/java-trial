@@ -10,4 +10,10 @@ public class State
 		this.name = _name;
 		this.countryId = _countryId;
     }
+
+    public void printStateDetails() 
+    {
+    	Country country = Search.searchCountryById(countryId);
+    	System.out.println("Country: " + country.name);
+    }
 }
