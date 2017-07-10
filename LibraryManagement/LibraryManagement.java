@@ -400,7 +400,8 @@ public class LibraryManagement
 			System.out.print("Select option from above : ");
 			int selectedOption = sc.nextInt();
 
-			if(selectedOption == -1) {
+			if(selectedOption == -1) 
+			{
 				System.out.println("Thank you for using our system.");
 				break;
 			}
